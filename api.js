@@ -1,10 +1,12 @@
 //what day it is ?
-let date_ = new Date();
+let date_ = Date.now();
+
 
 let url = 'https://newsapi.org/v2/everything?' +
-    'q=Supermaket&' +
-    'from=' + date_ +
-    'sortBy=popularity&' +
+    'q=slow food&' +
+    'from=' + date_ + '&' +
+    'language=it&' +
+    //'sortBy=popularity&' +
     'apiKey=c9b8835b7f2c419982ddc0396b5944cc';
 
 let req = new Request(url);
