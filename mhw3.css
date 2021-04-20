@@ -394,3 +394,14 @@
     section#apiNews div img {
         width: 200px;
     }
+    
+    section#apiFinnhub div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 400px;
+        width: 500px;
+        margin: 5px;
+        padding: 5px;
+    }
