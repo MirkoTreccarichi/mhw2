@@ -17,6 +17,8 @@ function onResponse(response) {
 }
 
 function onJson(json) {
+    //TODO FARE LA FUNZIONE CHE MI GESTISCE IL JSON DELLE NOTIZIE
+
 
     const arts = json.articles;
 
@@ -75,11 +77,13 @@ function FinHubObj(name_, logo_, url_) {
 //Response Management
 
 function onResponseFinhub(resp) {
+    console.log(resp);
     return resp.json();
 }
 
 
 function onJsonFH(json) {
+    const section = document.querySelector("#apiFinnhub");
 
     const js = Object.entries(json);
     const finhub = new FinHubObj(js[7][1], js[5][1], js[11][1]);
@@ -103,31 +107,27 @@ function onJsonFH(json) {
 
     console.log(container);
 
+    section.append(container);
+
     //TODO: Inserire l'append al div che contiene i dettagli sui partner
 
 }
 
-function onResponseFonResponseFH(response) {
-    console.log(response);
-    return response;
-}
 //fetch
 
-const symbs = ['JNJ', 'PG', 'CPR']
 
-for (let symb of symbs) {
 
-    //fetch
-    const endpoint_fh = 'https://finnhub.io/api/v1/stock/profile2';
+const endpoint_market = 'https://finnhub.io/api/v1/stock/profile2?';
+const apikey_market = 'c1vetqqad3ibv04ba3g0';
+const symbols = ['JNJ', 'PG'];
 
-    const apikey_fh = 'c1vetqqad3ibv04ba3g0';
 
-    const url_fh = endpoint_fh +
-        '?symbol=' + symb +
-        '&token=' + apikey_fh;
+for (let symb of symbols) {
 
-    const req = new Request(url_fh);
+    const url2 = endpoint_market +
+        'symbol=' + symb +
+        '&token=' + apikey_market;
 
-    fetch(req).then(onResponseFonResponseFH).then(onJsonFH);
-
+    const req = new Request(url2);
+    fetch(req).then(onResponseFinhub).then(onJsonFH);
 }
