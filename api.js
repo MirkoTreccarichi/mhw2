@@ -17,7 +17,7 @@ function onResponse(response) {
 }
 
 function onJson(json) {
-    //TODO FARE LA FUNZIONE CHE MI GESTISCE IL JSON DELLE NOTIZIE
+
 
 
     const arts = json.articles;
@@ -26,8 +26,9 @@ function onJson(json) {
 
     section.classList.remove("hidden");
 
-    for (art of arts) {
+    for (let i = 0; i < 10; i++) {
 
+        const art = arts[i];
         //instantiation of the hmtl elements
         const contanier = document.createElement("div");
         const title = document.createElement("h3");
@@ -109,7 +110,6 @@ function onJsonFH(json) {
 
     section.append(container);
 
-    //TODO: Inserire l'append al div che contiene i dettagli sui partner
 
 }
 
