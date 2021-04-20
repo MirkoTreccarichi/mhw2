@@ -20,33 +20,41 @@ function onJson(json) {
     //TODO FARE LA FUNZIONE CHE MI GESTISCE IL JSON DELLE NOTIZIE
 
 
-    const arts = Object.entries(json).articles;
+    const arts = json.articles;
 
-    const section = document.querySelector("#mhw3")
+    const section = document.querySelector("#apiNews")
 
     section.classList.remove("hidden");
 
     //TODO CICLO DI INCLUSIONE DEI DATI 
-    for (art in arts) {
+    for (art of arts) {
+
+        //instantiation of the hmtl elements
+        const contanier = document.createElement("div");
+        const title = document.createElement("h3");
+        const img = document.createElement("img");
+        const description = document.createElement("p");
+        const source = document.createElement("a");
 
 
-        //creation of the html elements
+        //initialization and class assignment
+        title.textContent = art.title;
+        img.src = art.urlToImage;
+        description.textContent = art.description;
+        source.href = art.url;
+        source.textContent = "vai alla fonte";
 
+        contanier.appendChild(title);
+        contanier.appendChild(img);
+        contanier.appendChild(description);
+        contanier.appendChild(source);
 
-        //initialazing of the hmtl elements
+        //append of the elementContainer
+        section.appendChild(contanier);
 
-
-
-
-
-        //TODO AGGIUNTA DELL'ARTICOLO
+        console.log(contanier);
 
     }
-
-
-    console.log(articles);
-
-    //TODO CARICAMENTO NEL DOM
 
     console.log(json);
 }
@@ -62,7 +70,7 @@ fetch(req)
 
 //Finance dets constructor
 
-function findets(name_, logo_, url_) {
+function FinObj(name_, logo_, url_) {
     this.name = name_;
     this.logo = logo_;
     this.url = url_;
@@ -70,15 +78,36 @@ function findets(name_, logo_, url_) {
 
 //Response Management
 
-function onResponseIEX(resp) {
+function onResponseFH(resp) {
     return resp.json();
 }
 
 
-function onJsonIEX(json) {
+function onJsonFH(json) {
 
-    //TODO: Inserimento Nome, Logo, WebURL
     const js = Object.entries(json);
+    const fin = new FinObj(js[7][1], js[5][1], js[11][1]);
+
+    //Creazione div container da agganciare al div container dei partner
+    const divContainer = document.createElement("div");
+
+    //Creazione elementi da agganciare al div container dei dettagli sui partner
+    const name = document.createElement("h3");
+    name.textContent = fin.name;
+
+    const logo = document.createElement("img");
+    logo.src = fin.logo;
+
+    const weblink = document.createElement("a");
+    weblink.href = fin.url;
+    weblink.target = "_blank";
+
+    //Agganci
+    divContainer.appendChild(logo);
+    divContainer.appendChild(name);
+    divContainer.appendChild(weblink);
+
+    //TODO: Inserire l'append al div che contiene i dettagli sui partner
 
 }
 
@@ -97,6 +126,8 @@ for (let symb of symbs) {
         '?symbol=' + symb +
         '&token=' + apikey_fh;
 
+    const req = new Request(url_fh);
 
+    fetch(req).then(onResponseFonResponseFH).then(onJsonFH);
 
 }
