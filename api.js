@@ -16,14 +16,6 @@ function onResponse(response) {
     return response.json();
 }
 
-//Article constructor
-function article(title_, description_, url_, img_) {
-    this.title = title_;
-    this.description = description_;
-    this.url = url_;
-    this.img = img_;
-}
-
 function onJson(json) {
     //TODO FARE LA FUNZIONE CHE MI GESTISCE IL JSON DELLE NOTIZIE
 
@@ -36,25 +28,15 @@ function onJson(json) {
 
     //TODO CICLO DI INCLUSIONE DEI DATI 
     for (art in arts) {
-        const article = {};
 
-        let title = "",
-            description = "",
-            url = "",
-            img = "";
-
-        title = art.title;
-        description = art.description;
-        url = art.url;
-        img = art.urlToImage;
-
-        article = new article(title, description, url, img);
 
         //creation of the html elements
-        const contanier = document.createElement("div");
 
-        title = document.createElement("h3");
-        description = document.createElement("p");
+
+        //initialazing of the hmtl elements
+
+
+
 
 
         //TODO AGGIUNTA DELL'ARTICOLO
@@ -97,17 +79,24 @@ function onJsonIEX(json) {
 
     //TODO: Inserimento Nome, Logo, WebURL
     const js = Object.entries(json);
-    const symbs =
 
-        for (let symb of symbs) {
+}
 
-            //fetch
-            const endpoint_fh = 'https://finnhub.io/api/v1/stock/profile2';
+//fetch
 
-            const url_fh = endpoint_fh +
-                '?symbol=' + symb
-            const apikey_fh = '?symbol=AAPL&token='
+const symbs = ['', '', ''] //TODO: Mettere i simboli di mercato delle imprese (eg: AMZN, EBAY, ...)
 
-        }
+for (let symb of symbs) {
+
+    //fetch
+    const endpoint_fh = 'https://finnhub.io/api/v1/stock/profile2';
+
+    const apikey_fh = ''; //TODO: Inserire API-Key di finnhub.io
+
+    const url_fh = endpoint_fh +
+        '?symbol=' + symb +
+        '&token=' + apikey_fh;
+
+
 
 }
