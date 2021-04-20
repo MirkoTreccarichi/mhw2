@@ -17,8 +17,6 @@ function onResponse(response) {
 }
 
 function onJson(json) {
-    //TODO FARE LA FUNZIONE CHE MI GESTISCE IL JSON DELLE NOTIZIE
-
 
     const arts = json.articles;
 
@@ -51,7 +49,7 @@ function onJson(json) {
         //append of the elementContainer
         section.appendChild(contanier);
 
-        console.log(contanier);
+
 
     }
 
@@ -59,8 +57,7 @@ function onJson(json) {
 }
 
 
-fetch(req)
-    .then(onResponse).then(onJson);
+fetch(req).then(onResponse).then(onJson);
 
 
 
@@ -69,7 +66,7 @@ fetch(req)
 
 //Finance dets constructor
 
-function FinObj(name_, logo_, url_) {
+function FinHubObj(name_, logo_, url_) {
     this.name = name_;
     this.logo = logo_;
     this.url = url_;
@@ -77,7 +74,7 @@ function FinObj(name_, logo_, url_) {
 
 //Response Management
 
-function onResponseFH(resp) {
+function onResponseFinhub(resp) {
     return resp.json();
 }
 
@@ -85,26 +82,26 @@ function onResponseFH(resp) {
 function onJsonFH(json) {
 
     const js = Object.entries(json);
-    const fin = new FinObj(js[7][1], js[5][1], js[11][1]);
+    const finhub = new FinHubObj(js[7][1], js[5][1], js[11][1]);
 
-    //Creazione div container da agganciare al div container dei partner
-    const divContainer = document.createElement("div");
-
-    //Creazione elementi da agganciare al div container dei dettagli sui partner
+    const container = document.createElement("div");
     const name = document.createElement("h3");
-    name.textContent = fin.name;
-
     const logo = document.createElement("img");
-    logo.src = fin.logo;
-
     const weblink = document.createElement("a");
-    weblink.href = fin.url;
-    weblink.target = "_blank";
 
-    //Agganci
-    divContainer.appendChild(logo);
-    divContainer.appendChild(name);
-    divContainer.appendChild(weblink);
+    name.textContent = finhub.name;
+    logo.src = finhub.logo;
+
+    weblink.href = finhub.url;
+    weblink.target = "_blank";
+    weblink.textContent = "Link";
+
+
+    container.appendChild(logo);
+    container.appendChild(name);
+    container.appendChild(weblink);
+
+    console.log(container);
 
     //TODO: Inserire l'append al div che contiene i dettagli sui partner
 
@@ -116,7 +113,7 @@ function onResponseFonResponseFH(response) {
 }
 //fetch
 
-const symbs = ['', '', ''] //TODO: Mettere i simboli di mercato delle imprese (eg: AMZN, EBAY, ...)
+const symbs = ['JNJ', 'PG', 'CPR']
 
 for (let symb of symbs) {
 
