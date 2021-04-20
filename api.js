@@ -17,42 +17,51 @@ function onResponse(response) {
 }
 
 //Article constructor
-function article(title_, description_, content_, img_) {
+function article(title_, description_, url_, img_) {
     this.title = title_;
     this.description = description_;
-    this.content = content_;
+    this.url = url_;
     this.img = img_;
 }
 
 function onJson(json) {
     //TODO FARE LA FUNZIONE CHE MI GESTISCE IL JSON DELLE NOTIZIE
-    let articles = {};
-
 
 
     const arts = Object.entries(json).articles;
 
+    const section = document.querySelector("#mhw3")
+
+    section.classList.remove("hidden");
 
     //TODO CICLO DI INCLUSIONE DEI DATI 
     for (art in arts) {
         const article = {};
 
-        const title = "",
+        let title = "",
             description = "",
-            content = "",
+            url = "",
             img = "";
 
         title = art.title;
         description = art.description;
-        content = art.content;
+        url = art.url;
         img = art.urlToImage;
 
-        article = new article(title, description, content, img);
+        article = new article(title, description, url, img);
 
-        articles.push(article);
+        //creation of the html elements
+        const contanier = document.createElement("div");
+
+        title = document.createElement("h3");
+        description = document.createElement("p");
+
+
+        //TODO AGGIUNTA DELL'ARTICOLO
+
     }
-    console.log("inclusura dei dati completata");
-    //TODO AGGIUNTA DELL'ARTICOLO
+
+
     console.log(articles);
 
     //TODO CARICAMENTO NEL DOM
@@ -60,7 +69,7 @@ function onJson(json) {
     console.log(json);
 }
 
-console.log("ciaooooooooooooooooooooooooooooooooooooooooo");
+
 fetch(req)
     .then(onResponse).then(onJson);
 
@@ -88,7 +97,17 @@ function onJsonIEX(json) {
 
     //TODO: Inserimento Nome, Logo, WebURL
     const js = Object.entries(json);
+    const symbs =
 
+        for (let symb of symbs) {
 
+            //fetch
+            const endpoint_fh = 'https://finnhub.io/api/v1/stock/profile2';
+
+            const url_fh = endpoint_fh +
+                '?symbol=' + symb
+            const apikey_fh = '?symbol=AAPL&token='
+
+        }
 
 }

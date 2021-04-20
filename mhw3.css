@@ -380,3 +380,11 @@ div.customerPoint {
     height: 180px;
     width: 200px;
 }
+
+
+/* MHW3 */
+
+#mhw3 {
+    display: flex;
+    flex-wrap: wrap;
+}
