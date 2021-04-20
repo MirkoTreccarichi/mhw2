@@ -123,7 +123,7 @@ for (let symb of symbs) {
     //fetch
     const endpoint_fh = 'https://finnhub.io/api/v1/stock/profile2';
 
-    const apikey_fh = ''; //TODO: Inserire API-Key di finnhub.io
+    const apikey_fh = 'c1vetqqad3ibv04ba3g0';
 
     const url_fh = endpoint_fh +
         '?symbol=' + symb +
