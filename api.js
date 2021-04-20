@@ -26,7 +26,6 @@ function onJson(json) {
 
     section.classList.remove("hidden");
 
-    //TODO CICLO DI INCLUSIONE DEI DATI 
     for (art of arts) {
 
         //instantiation of the hmtl elements
@@ -111,6 +110,10 @@ function onJsonFH(json) {
 
 }
 
+function onResponseFonResponseFH(response) {
+    console.log(response);
+    return response;
+}
 //fetch
 
 const symbs = ['', '', ''] //TODO: Mettere i simboli di mercato delle imprese (eg: AMZN, EBAY, ...)
