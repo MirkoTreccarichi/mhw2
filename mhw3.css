@@ -389,6 +389,7 @@
         width: 500px;
         margin: 5px;
         padding: 5px;
+        text-align: justify;
     }
     
     section#apiNews div img {
