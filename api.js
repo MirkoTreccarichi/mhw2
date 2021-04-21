@@ -128,7 +128,7 @@ const symbols = ['JNJ', 'PG'];
 
 const section = document.querySelector("#apiFinnhub");
 const sectionTitle = document.createElement("h1");
-sectionTitle.textContent("Scopri le notizie dal mondo Slow Food");
+sectionTitle.textContent = "Scopri le notizie dal mondo Slow Food";
 
 section.appendChild(sectionTitle);
 
