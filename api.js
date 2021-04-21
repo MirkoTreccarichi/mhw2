@@ -26,6 +26,11 @@ function onJson(json) {
 
     section.classList.remove("hidden");
 
+    const sectionTitle = document.createElement("h1");
+    sectionTitle.textContent("Scopri le notizie dal mondo Slow Food");
+
+    section.appendChild(sectionTitle);
+
     for (let i = 0; i < 10; i++) {
 
         const art = arts[i];
@@ -120,6 +125,12 @@ function onJsonFH(json) {
 const endpoint_market = 'https://finnhub.io/api/v1/stock/profile2?';
 const apikey_market = 'c1vetqqad3ibv04ba3g0';
 const symbols = ['JNJ', 'PG'];
+
+const section = document.querySelector("#apiFinnhub");
+const sectionTitle = document.createElement("h1");
+sectionTitle.textContent("Scopri le notizie dal mondo Slow Food");
+
+section.appendChild(sectionTitle);
 
 
 for (let symb of symbols) {
